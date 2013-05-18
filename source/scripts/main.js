@@ -27,12 +27,12 @@ require( [ "spread/Controller" ], function( Controller ) {
 
 	function initListeners() {
 
-		document.addEventListener( "click", onClick, false );
+		document.addEventListener( "mousedown", onClick, false );
 		document.addEventListener( "touchstart", onTouchEnd, false );
 
 	}
 
-	function onClick( event ) {
+	function onClick( event, xcord, ycord ) {
 
 		var div = document.createElement( "div" );
 
@@ -41,9 +41,24 @@ require( [ "spread/Controller" ], function( Controller ) {
 			height: window.innerHeight
 		}
 
-		var position = {
-			x: event.pageX,
-			y: event.pageY
+		var position;
+		if(xcord){
+			position = {
+				x: xcord,
+				y: ycord
+			}
+
+		}
+		else{
+			if(event.pageX == 0){
+				return;
+			}
+			else{
+				position = {
+					x: event.pageX,
+					y: event.pageY
+				}
+			}
 		}
 
 		var controller = new Controller( div, size, position );
@@ -68,5 +83,17 @@ require( [ "spread/Controller" ], function( Controller ) {
 
 		onClick( event );
 	}
+
+// var w = window,
+//     d = document,
+//     e = d.documentElement,
+//     g = d.getElementsByTagName('body')[0],
+//     x = w.innerWidth || e.clientWidth || g.clientWidth,
+//     y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+//alert(window.innerWidth);
+w = window.innerWidth;
+halfwidth = w/2;
+
+init_animation = function () { onClick( event, halfwidth, 1 ); }
 
 } );

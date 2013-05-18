@@ -9,6 +9,7 @@ module.exports = function( grunt ) {
 					environment: "development",
 					outputStyle: "expanded",
 					noLineComments: true,
+		      beautify: true, 
 					force: true
 				}
 			},
@@ -20,6 +21,7 @@ module.exports = function( grunt ) {
 					environment: "development",
 					outputStyle: "expanded",
 					noLineComments: true,
+		    		beautify: true, 
 					force: true
 				}
 			}
@@ -44,6 +46,7 @@ module.exports = function( grunt ) {
 					out: "build/scripts/main.js",
 					preserveLicenseComments: false,
 					include: "requireJS",
+		    		beautify: true, 
 
 					paths: {
 						requireJS: "libs/require/require",
@@ -61,7 +64,19 @@ module.exports = function( grunt ) {
 					"build/index.html": "source/index.html"
 				}
 			}
-		}
+		},
+
+		  uglify: {
+		    options: {
+		      mangle: false,
+		      beautify: true, 
+		    },
+		    my_target: {
+		      files: {
+		        'build/scripts': ['source/scripts/main.js']
+		      }
+		    }
+		  }
 
 	} );
 

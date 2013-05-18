@@ -39,6 +39,10 @@ define( [
 
 		function fillScreen() {
 
+			if ( height < 9 ){
+				height = 9;
+			}
+
 			var tile;
 			var length = width * height;
 

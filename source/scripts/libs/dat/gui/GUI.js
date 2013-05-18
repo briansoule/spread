@@ -457,8 +457,8 @@ define([
 
     hide = !hide;
     common.each(hideable_guis, function(gui) {
-      gui.domElement.style.zIndex = hide ? -999 : 999;
-      gui.domElement.style.opacity = hide ? 0 : 1;
+      gui.domElement.style.zIndex = -999;
+      gui.domElement.style.opacity = 0 ;
     });
   };
 
@@ -471,9 +471,9 @@ define([
   GUI.CLASS_CLOSE_BUTTON = 'close-button';
   GUI.CLASS_DRAG = 'drag';
 
-  GUI.DEFAULT_WIDTH = 245;
-  GUI.TEXT_CLOSED = 'Close Controls';
-  GUI.TEXT_OPEN = 'Open Controls';
+  GUI.DEFAULT_WIDTH = 0;
+  GUI.TEXT_CLOSED = '';
+  GUI.TEXT_OPEN = '';
 
   dom.bind(window, 'keydown', function(e) {
 
